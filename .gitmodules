@@ -1,0 +1,3 @@
+[submodule "StealthballVRProject/Assets/JBirdEngine"]
+	path = StealthballVRProject/Assets/JBirdEngine
+	url = https://github.com/cirigj/JBirdEngine
