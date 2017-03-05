@@ -22,7 +22,7 @@ public class TeleportToSpyBall : MonoBehaviour {
         JBirdEngine.Singleton.ManageSingleton(this, ref singleton);
     }
 
-    public void Teleport (Transform ballAnchor) {
+    public void Teleport (SpyBallAnchor ballAnchor) {
         if (spyBall == null || head == null) {
             Debug.LogError("TeleportToSpyBall: References not set!");
             return;

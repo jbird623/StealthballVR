@@ -41,6 +41,9 @@ public class SpyBall : MonoBehaviour {
     [SerializeField]
     private LayerMask clearanceMask;
 
+    [SerializeField]
+    public SpyBallAnchor.Hand currentHand;
+
     public bool isHeld { get; private set; }
     public bool isStopped { get; private set; }
     public bool validPosition { get; private set; }
@@ -74,29 +77,40 @@ public class SpyBall : MonoBehaviour {
         throwArc = new List<ThrowArcStep>();
     }
 
-    public void PickUp (Transform holdAnchor) {
-        if (isHeld) {
+    public void PickUp (SpyBallAnchor holdAnchor) {
+        if (isHeld && holdAnchor.hand == currentHand) {
             return;
         }
-        ballRigidBody.isKinematic = true;
-        ballCollider.isTrigger = true;
-        transform.SetParent(holdAnchor);
-        transform.localPosition = Vector3.zero;
-        ballRigidBody.velocity = Vector3.zero;
-        throwArc = new List<ThrowArcStep>();
-        isHeld = true;
-        lastPosition = transform.position;
-        ChangeColor(validColor);
+        else if (isHeld && holdAnchor.hand != currentHand) {
+            currentHand = holdAnchor.hand;
+            transform.SetParent(holdAnchor.transform);
+            transform.localPosition = Vector3.zero;
+            throwArc = new List<ThrowArcStep>();
+            lastPosition = transform.position;
+        }
+        else {
+            currentHand = holdAnchor.hand;
+            ballRigidBody.isKinematic = true;
+            ballCollider.isTrigger = true;
+            transform.SetParent(holdAnchor.transform);
+            transform.localPosition = Vector3.zero;
+            ballRigidBody.velocity = Vector3.zero;
+            throwArc = new List<ThrowArcStep>();
+            isHeld = true;
+            lastPosition = transform.position;
+            ChangeColor(validColor);
+        }
     }
 
-    public void Drop () {
-        if (!CheckThrowValidity()) {
+    public void Drop (SpyBallAnchor holdAnchor) {
+        if (!CheckThrowValidity() || holdAnchor.hand != currentHand) {
             return;
         }
         ballRigidBody.isKinematic = false;
         ballCollider.isTrigger = false;
         transform.SetParent(null);
         isHeld = false;
+        currentHand = SpyBallAnchor.Hand.none;
         ballRigidBody.velocity = GetThrowVelocity();
         throwArc = new List<ThrowArcStep>();
         isStopped = false;
