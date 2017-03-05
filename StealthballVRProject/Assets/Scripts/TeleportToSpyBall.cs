@@ -18,7 +18,7 @@ public class TeleportToSpyBall : MonoBehaviour {
             Debug.LogError("TeleportToSpyBall: References not set!");
             return;
         }
-        if (spyBall.isHeld || !spyBall.isStopped) {
+        if (spyBall.isHeld || !spyBall.isStopped || !spyBall.validPosition) {
             return;
         }
         Vector3 distToHead = head.position - transform.position;
