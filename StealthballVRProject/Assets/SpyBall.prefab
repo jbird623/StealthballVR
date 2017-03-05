@@ -226,4 +226,7 @@ MonoBehaviour:
   _ballRadius: 0.1
   clearanceCapsuleRadius: 0.4
   clearanceCapsuleHeight: 1.8
+  clearanceMask:
+    serializedVersion: 2
+    m_Bits: 4294966015
   throwVelocityMultiplier: 100

@@ -38,6 +38,8 @@ public class SpyBall : MonoBehaviour {
     private float clearanceCapsuleRadius = 0.4f;
     [SerializeField]
     private float clearanceCapsuleHeight = 1.8f;
+    [SerializeField]
+    private LayerMask clearanceMask;
 
     public bool isHeld { get; private set; }
     public bool isStopped { get; private set; }
@@ -165,11 +167,11 @@ public class SpyBall : MonoBehaviour {
 
     bool CheckClearance () {
         RaycastHit hit;
-        Physics.Raycast(transform.position, Vector3.up, out hit, clearanceCapsuleHeight);
+        Physics.Raycast(transform.position, Vector3.up, out hit, clearanceCapsuleHeight, clearanceMask);
         if (hit.collider != null) {
             return false;
         }
-        Physics.SphereCast(transform.position + Vector3.up * clearanceCapsuleRadius, clearanceCapsuleRadius, Vector3.up, out hit, clearanceCapsuleHeight - (2 * clearanceCapsuleRadius));
+        Physics.SphereCast(transform.position + Vector3.up * clearanceCapsuleRadius, clearanceCapsuleRadius, Vector3.up, out hit, clearanceCapsuleHeight - (2 * clearanceCapsuleRadius), clearanceMask);
         if (hit.collider != null) {
             return false;
         }
