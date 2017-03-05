@@ -10,6 +10,8 @@ public class TeleportToSpyBall : MonoBehaviour {
     private Transform head;
     [SerializeField]
     private bool backToHandOnTeleport;
+    [SerializeField]
+    private Transform teleportParticlePrefab;
 
     public void Teleport (Transform ballAnchor) {
         if (spyBall == null || head == null) {
@@ -24,6 +26,9 @@ public class TeleportToSpyBall : MonoBehaviour {
         transform.position = (spyBall.transform.position - Vector3.down * spyBall.ballRadius) - distToPlayer;
         if (backToHandOnTeleport) {
             spyBall.PickUp(ballAnchor);
+        }
+        if (teleportParticlePrefab != null) {
+            Instantiate(teleportParticlePrefab, transform.position + distToPlayer, Quaternion.identity);
         }
     }
 
