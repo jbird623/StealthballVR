@@ -347,6 +347,21 @@ Prefab:
       propertyPath: LightsModule.light
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 198144515358559090, guid: 52e705d32b3b6fb4fa004d925ed4e708,
+        type: 2}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198144515358559090, guid: 52e705d32b3b6fb4fa004d925ed4e708,
+        type: 2}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198144515358559090, guid: 52e705d32b3b6fb4fa004d925ed4e708,
+        type: 2}
+      propertyPath: randomSeed
+      value: -1983835590
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 52e705d32b3b6fb4fa004d925ed4e708, type: 2}
   m_IsPrefabParent: 0
