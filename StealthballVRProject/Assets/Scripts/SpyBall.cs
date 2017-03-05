@@ -62,6 +62,7 @@ public class SpyBall : MonoBehaviour {
     private float throwVelocityMultiplier = 5f;
 
     void Awake () {
+        transform.SetParent(null);
         validThrow = true;
         ballCollider = GetComponent<Collider>();
         ballRigidBody = GetComponent<Rigidbody>();
