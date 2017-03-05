@@ -13,6 +13,15 @@ public class TeleportToSpyBall : MonoBehaviour {
     [SerializeField]
     private Transform teleportParticlePrefab;
 
+    public static TeleportToSpyBall singleton;
+
+    [SerializeField]
+    private LayerMask ballExclusionMask;
+
+    void Awake () {
+        JBirdEngine.Singleton.ManageSingleton(this, ref singleton);
+    }
+
     public void Teleport (Transform ballAnchor) {
         if (spyBall == null || head == null) {
             Debug.LogError("TeleportToSpyBall: References not set!");
@@ -32,4 +41,12 @@ public class TeleportToSpyBall : MonoBehaviour {
         }
     }
 
+    public bool CheckPlayerPositionValidity () {
+        Vector3 shoulderPos = new Vector3(head.position.x, head.position.y * 6f / 7f, head.position.z);
+        float maxDist = Vector3.Distance(shoulderPos, spyBall.transform.position);
+        if (Physics.Raycast(shoulderPos, (spyBall.transform.position - shoulderPos).normalized, maxDist, ballExclusionMask)) {
+            return false;
+        }
+        return true;
+    }
 }

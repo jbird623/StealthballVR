@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4117293269567838}
   - component: {fileID: 33424866487032558}
   - component: {fileID: 23566006778264908}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 64013185501023954}
   - component: {fileID: 54001650783898830}
   - component: {fileID: 114400552815103616}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpyBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4843558664946378}
   - component: {fileID: 108689919784855290}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,10 +215,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2771d3e37e263841a38553e0d282194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  throwArcSize: 5
   indicatorLight: {fileID: 108689919784855290}
   movingColor: {r: 0.47450984, g: 0.3372549, b: 0.9058824, a: 1}
   movingTexture: {fileID: 2800000, guid: 6aa9beb9718875940bfec422abf281c9, type: 3}
-  stoppedColor: {r: 0.19912416, g: 0.9338235, b: 0.7818168, a: 1}
+  validColor: {r: 0.2, g: 0.93333334, b: 0.78039217, a: 1}
   stoppedTexture: {fileID: 2800000, guid: 8cab7e8dc9c8e1347a04a72ce788a9d5, type: 3}
   invalidColor: {r: 0.854902, g: 0.18823531, b: 0.18823531, a: 1}
   invalidTexture: {fileID: 2800000, guid: 81c1fa9853cc6084d904d381daef39d0, type: 3}
