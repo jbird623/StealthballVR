@@ -13,11 +13,15 @@ public class SpyBall : MonoBehaviour {
     [SerializeField]
     private Color movingColor;
     [SerializeField]
+    private Texture movingTexture;
+    [SerializeField]
     private Color stoppedColor;
     [SerializeField]
-    private Color heldColor;
+    private Texture stoppedTexture;
     [SerializeField]
     private Color invalidColor;
+    [SerializeField]
+    private Texture invalidTexture;
 
     [SerializeField]
     private float _ballRadius = 0.1f;
@@ -56,7 +60,7 @@ public class SpyBall : MonoBehaviour {
         transform.localPosition = Vector3.zero;
         ballRigidBody.velocity = Vector3.zero;
         isHeld = true;
-        ChangeColor(heldColor);
+        ChangeColor(movingColor);
     }
 
     public void Drop () {
@@ -103,6 +107,15 @@ public class SpyBall : MonoBehaviour {
     void ChangeColor (Color c) {
         indicatorLight.color = c;
         ballRenderer.material.SetColor("_OutlineColor", c);
+        if (c == movingColor) {
+            ballRenderer.material.SetTexture("_MainTex", movingTexture);
+        }
+        else if (c == stoppedColor) {
+            ballRenderer.material.SetTexture("_MainTex", stoppedTexture);
+        }
+        else if (c == invalidColor) {
+            ballRenderer.material.SetTexture("_MainTex", invalidTexture);
+        }
     }
 
 }
