@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Spyball_CamTex
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: SpyBallMat
+  m_Shader: {fileID: 4800000, guid: 180e0efb8303cd04582b898ab791fc14, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
@@ -121,7 +121,10 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.021979174, g: 0.021979174, b: 0.021979174, a: 1}
+      second: {r: 0.1581423, g: 0.15831941, b: 0.18382353, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
+    - first:
+        name: _OutlineColor
+      second: {r: 0.52833784, g: 0.023356423, b: 0.7941176, a: 1}
