@@ -21,7 +21,9 @@ GameObject:
   - component: {fileID: 4291305560166902}
   - component: {fileID: 33360771722588312}
   - component: {fileID: 23268422354039588}
-  m_Layer: 0
+  - component: {fileID: 64971383611859784}
+  - component: {fileID: 114965078076658324}
+  m_Layer: 11
   m_Name: PowerSwitch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +40,7 @@ GameObject:
   - component: {fileID: 4662246800680106}
   - component: {fileID: 33792135073187936}
   - component: {fileID: 23511471065066218}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WheelRFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +57,8 @@ GameObject:
   - component: {fileID: 4519523915975612}
   - component: {fileID: 33868511713629294}
   - component: {fileID: 23084259435370116}
-  m_Layer: 0
+  - component: {fileID: 65766693669174414}
+  m_Layer: 11
   m_Name: ScreenPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +75,9 @@ GameObject:
   - component: {fileID: 4713128768986884}
   - component: {fileID: 33898710839174202}
   - component: {fileID: 23485156601233128}
-  m_Layer: 0
+  - component: {fileID: 65469442557654588}
+  - component: {fileID: 136683755097486722}
+  m_Layer: 11
   m_Name: Robo_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +94,7 @@ GameObject:
   - component: {fileID: 4959322260771430}
   - component: {fileID: 33664385742835440}
   - component: {fileID: 23873090924858694}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WheelLFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +111,7 @@ GameObject:
   - component: {fileID: 4251245888274830}
   - component: {fileID: 33715928929457562}
   - component: {fileID: 23805426256612734}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WheelLBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +128,7 @@ GameObject:
   - component: {fileID: 4723451300837420}
   - component: {fileID: 33290577532767318}
   - component: {fileID: 23586735757679684}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WheelRBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +143,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4607033235218126}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RoboGuard1000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +196,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1901293592237160}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.096, y: 0, z: 0}
+  m_LocalPosition: {x: -2.126769, y: -0.14600003, z: -2.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4291305560166902}
@@ -526,3 +531,68 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1267091206537744}
   m_Mesh: {fileID: 4300006, guid: 7b9afb16c66190148ba7a55bea66414f, type: 3}
+--- !u!64 &64971383611859784
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1089746319413378}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 7b9afb16c66190148ba7a55bea66414f, type: 3}
+--- !u!65 &65469442557654588
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1267091206537744}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0062547186, y: 0.006572511, z: 0.011861746}
+  m_Center: {x: 0.0000000023841857, y: 0.000028609633, z: 0.006063685}
+--- !u!65 &65766693669174414
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238984091629954}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0037762835, y: -0.00021256029, z: 0.002526699}
+  m_Center: {x: -0.000012989044, y: 0.000106390034, z: -0.000024943341}
+--- !u!114 &114965078076658324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1089746319413378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2878dd376972db24f9e8201322822476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onPosition: {x: -0.7071068, y: 0, z: 0, w: 0.7071067}
+  offPosition: {x: -0.9242457, y: 0, z: 0, w: 0.3817982}
+  lerpTime: 0.2
+--- !u!136 &136683755097486722
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1267091206537744}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.00033632072
+  m_Height: 0.0037539592
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.002, z: 0.014}
