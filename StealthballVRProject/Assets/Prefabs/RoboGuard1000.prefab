@@ -143,6 +143,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4607033235218126}
+  - component: {fileID: 114285134305594250}
   m_Layer: 11
   m_Name: RoboGuard1000
   m_TagString: Untagged
@@ -569,6 +570,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0037762835, y: -0.00021256029, z: 0.002526699}
   m_Center: {x: -0.000012989044, y: 0.000106390034, z: -0.000024943341}
+--- !u!114 &114285134305594250
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1901293592237160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dce4e36635bb8b0468bc873bab43f84f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  route: []
 --- !u!114 &114965078076658324
 MonoBehaviour:
   m_ObjectHideFlags: 1
