@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33402277247779818}
   - component: {fileID: 23603143519461544}
   m_Layer: 0
-  m_Name: 2x2x2_4Door_InnerFrame
+  m_Name: 2x2x2_4Door_InFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
