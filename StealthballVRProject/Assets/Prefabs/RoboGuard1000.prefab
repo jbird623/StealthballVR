@@ -819,7 +819,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce4e36635bb8b0468bc873bab43f84f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementMode: 0
+  movementEnabled: 1
+  visionEnabled: 1
   route: []
+  moveSpeed: 1
+  turnSpeed: 100
 --- !u!114 &114965078076658324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -833,7 +838,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onPosition: {x: -0.7071068, y: 0, z: 0, w: 0.7071067}
   offPosition: {x: -0.9242457, y: 0, z: 0, w: 0.3817982}
-  lerpTime: 0.2
+  lerpTime: 0.15
+  robotRef: {fileID: 0}
 --- !u!136 &136683755097486722
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -13,8 +13,12 @@ public class RobotOffSwitch : MonoBehaviour {
 
     private bool flipped;
 
+    [SerializeField]
+    RobotPatrol robotRef;
+
     void Awake () {
         flipped = false;
+        robotRef = GetComponentInParent<RobotPatrol>();
     }
 
 	void OnCollisionEnter () {
@@ -25,13 +29,14 @@ public class RobotOffSwitch : MonoBehaviour {
     }
 
     void TurnOff () {
+        robotRef.TurnOff();
         StartCoroutine(LerpToOffPosition());
     }
 
     IEnumerator LerpToOffPosition () {
         float t = 0f;
         while (t < lerpTime) {
-            transform.rotation = Quaternion.Lerp(onPosition, offPosition, t / lerpTime);
+            transform.localRotation = Quaternion.Lerp(onPosition, offPosition, t / lerpTime);
             t += Time.deltaTime;
             yield return null;
         }
