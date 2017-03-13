@@ -85,6 +85,41 @@ public class RobotPatrolEditor : Editor {
             Handles.DrawLine(targetPatrol.route[i], i < targetPatrol.route.Count - 1 ? targetPatrol.route[i+1] : targetPatrol.route[0]);
             Handles.ArrowCap(0, targetPatrol.route[i], Quaternion.LookRotation(((i < targetPatrol.route.Count - 1 ? targetPatrol.route[i + 1] : targetPatrol.route[0]) - targetPatrol.route[i]), Vector3.up), 1.5f);
         }
+
+        // Draw search cone
+        if (targetPatrol.visionEnabled) {
+            Handles.color = new Color(1f, 1f, 0f, 0.5f);
+            DrawViewCone();
+        }
+
+    }
+
+    void DrawViewCone () {
+        Vector3 eyePosition = targetPatrol.transform.position + targetPatrol.eyeOffset;
+        float azimuth = targetPatrol.searchSpread.x;
+        float elevation = targetPatrol.searchSpread.y;
+        float viewDistance = targetPatrol.searchSpread.z;
+
+        // Calculate Lines
+        Vector3 fromTopRight = VectorHelper.FromAzimuthAndElevation(azimuth, elevation, targetPatrol.transform.up, targetPatrol.transform.forward);
+        Vector3 fromTopLeft = VectorHelper.FromAzimuthAndElevation(-azimuth, elevation, targetPatrol.transform.up, targetPatrol.transform.forward);
+        Vector3 fromBottomRight = VectorHelper.FromAzimuthAndElevation(azimuth, -elevation, targetPatrol.transform.up, targetPatrol.transform.forward);
+        Vector3 fromBottomLeft = VectorHelper.FromAzimuthAndElevation(-azimuth, -elevation, targetPatrol.transform.up, targetPatrol.transform.forward);
+        // Draw Lines
+        Handles.DrawLine(eyePosition, eyePosition + fromTopRight * viewDistance);
+        Handles.DrawLine(eyePosition, eyePosition + fromTopLeft * viewDistance);
+        Handles.DrawLine(eyePosition, eyePosition + fromBottomRight * viewDistance);
+        Handles.DrawLine(eyePosition, eyePosition + fromBottomLeft * viewDistance);
+        // Calculate Normals
+        Vector3 normalRight = VectorHelper.FromAzimuthAndElevation(azimuth + 90f, 0f, targetPatrol.transform.up, targetPatrol.transform.forward);
+        Vector3 normalLeft = VectorHelper.FromAzimuthAndElevation(-azimuth - 90f, 0f, targetPatrol.transform.up, targetPatrol.transform.forward);
+        Vector3 normalTop = Vector3.Cross(fromTopLeft, fromTopRight);
+        Vector3 normalBottom = Vector3.Cross(fromBottomRight, fromBottomLeft);
+        // Draw Arcs
+        Handles.DrawWireArc(eyePosition, normalRight, fromTopRight, elevation * 2f, viewDistance);
+        Handles.DrawWireArc(eyePosition, normalLeft, fromBottomLeft, elevation * 2f, viewDistance);
+        Handles.DrawWireArc(eyePosition, normalTop, fromTopLeft, Vector3.Angle(fromTopLeft, fromTopRight), viewDistance);
+        Handles.DrawWireArc(eyePosition, normalBottom, fromBottomRight, Vector3.Angle(fromBottomLeft, fromBottomRight), viewDistance);
     }
 
     public override void OnInspectorGUI () {
@@ -197,6 +232,10 @@ public class RobotPatrolEditor : Editor {
         if (GUILayout.Button("Move Robot to First Position")) {
             this.HandleCustomEditorMethod(MoveRobotToFirstPosition);
         }
+
+        if (GUILayout.Button("Test")) {
+            Debug.LogFormat("(\u03B1: {0}, \u03B2: {1})", targetPatrol.targetTransform.position.GetAzimuth(targetPatrol.transform.position + targetPatrol.eyeOffset, targetPatrol.transform.up, targetPatrol.transform.forward), targetPatrol.targetTransform.position.GetElevation(targetPatrol.transform.position + targetPatrol.eyeOffset, targetPatrol.transform.up));
+        }
     }
 
     void LockRouteToYPlane () {
@@ -237,7 +276,7 @@ public class RobotPatrolEditor : Editor {
             Debug.LogWarningFormat("RobotPatrolEditor: Invalid index '{0}'", routeIndex);
             return;
         }
-        targetPatrol.route.Insert(routeIndex, Vector3Helper.Midpoint(targetPatrol.route[routeIndex], routeIndex == 0 ? targetPatrol.route[targetPatrol.route.Count - 1] : targetPatrol.route[routeIndex - 1]));
+        targetPatrol.route.Insert(routeIndex, VectorHelper.Midpoint(targetPatrol.route[routeIndex], routeIndex == 0 ? targetPatrol.route[targetPatrol.route.Count - 1] : targetPatrol.route[routeIndex - 1]));
     }
 
     void InsertNodeAfterIndex () {
@@ -245,7 +284,7 @@ public class RobotPatrolEditor : Editor {
             Debug.LogWarningFormat("RobotPatrolEditor: Invalid index '{0}'", routeIndex);
             return;
         }
-        targetPatrol.route.Insert(routeIndex + 1, Vector3Helper.Midpoint(targetPatrol.route[routeIndex], routeIndex == targetPatrol.route.Count - 1 ? targetPatrol.route[0] : targetPatrol.route[routeIndex + 1]));
+        targetPatrol.route.Insert(routeIndex + 1, VectorHelper.Midpoint(targetPatrol.route[routeIndex], routeIndex == targetPatrol.route.Count - 1 ? targetPatrol.route[0] : targetPatrol.route[routeIndex + 1]));
         ++routeIndex;
     }
 

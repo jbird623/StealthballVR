@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using JBirdEngine.AngleVector;
 
 public class RobotPatrol : MonoBehaviour {
 
@@ -13,9 +14,34 @@ public class RobotPatrol : MonoBehaviour {
     [SerializeField]
     private MovementMode movementMode;
     [SerializeField]
-    private bool movementEnabled = true;
+    private bool _movementEnabled = true;
+    public bool movementEnabled {
+        get {
+            return _movementEnabled;
+        }
+    }
     [SerializeField]
-    private bool visionEnabled = true;
+    private bool _visionEnabled = true;
+    public bool visionEnabled {
+        get {
+            return _visionEnabled;
+        }
+    }
+
+    [SerializeField]
+    private Vector3 _eyeOffset;
+    public Vector3 eyeOffset {
+        get {
+            return _eyeOffset;
+        }
+    }
+    [SerializeField]
+    private AngleVector3 _searchSpread;
+    public AngleVector3 searchSpread {
+        get {
+            return _searchSpread;
+        }
+    }
 
     public List<Vector3> route;
 
@@ -31,6 +57,14 @@ public class RobotPatrol : MonoBehaviour {
             else {
                 _routeIndex = value % route.Count;
             }
+        }
+    }
+
+    [SerializeField]
+    private Transform _targetTransform;
+    public Transform targetTransform {
+        get {
+            return _targetTransform;
         }
     }
 
@@ -57,7 +91,7 @@ public class RobotPatrol : MonoBehaviour {
     }
 
     void FixedUpdate () {
-        if (movementEnabled) {
+        if (_movementEnabled) {
             if (movementMode == MovementMode.patroling) {
                 FollowRoute();
             }
@@ -83,8 +117,8 @@ public class RobotPatrol : MonoBehaviour {
     }
 
     public void TurnOff () {
-        movementEnabled = false;
-        visionEnabled = false;
+        _movementEnabled = false;
+        _visionEnabled = false;
     }
 
 }
