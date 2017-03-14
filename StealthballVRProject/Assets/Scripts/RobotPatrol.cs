@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using JBirdEngine.AngleVector;
+using JBirdEngine.Angles;
 
 public class RobotPatrol : MonoBehaviour {
 
