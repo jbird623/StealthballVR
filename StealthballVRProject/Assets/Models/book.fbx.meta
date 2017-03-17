@@ -1,22 +1,15 @@
 fileFormatVersion: 2
-guid: 0b2623149ac58894286205f7c7736a95
-timeCreated: 1489643585
+guid: 4236f4f4f721df74abe22e42f5e7ef84
+timeCreated: 1489789706
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Beaker
-    100004: ConicalFlask
     400000: //RootNode
-    400002: Beaker
-    400004: ConicalFlask
-    2300000: Beaker
-    2300002: ConicalFlask
-    3300000: Beaker
-    3300002: ConicalFlask
-    4300000: Beaker
-    4300002: ConicalFlask
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Book
   materials:
     importMaterials: 1
     materialName: 0
